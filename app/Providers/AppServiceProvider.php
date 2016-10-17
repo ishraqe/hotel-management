@@ -13,7 +13,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layout.master',function($view){
+
+                $actual_link = substr("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", 22);
+                    if ($actual_link==false) {
+                        $actual_link='/';
+                    }
+                $view->with('actual_link', $actual_link);
+
+               });
+
+   
+
+       
+
+           
+      
+  
+           
     }
 
     /**
@@ -23,6 +40,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+     
+
+   
     }
 }
