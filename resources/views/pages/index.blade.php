@@ -5,7 +5,7 @@
   <!-- navbar-nav -->
   
   <!-- end ver-middle --> 
-
+{{$rooms}}
 <!-- end home-slider-header -->
 <section class="we-are-the-best">
   <div class="container">
@@ -167,6 +167,7 @@
             </div>
             <!-- end testimonial-left --> 
           </div>
+
           <!-- end item -->
           <div class="item">
             <div class="testimonial-right">

@@ -21,6 +21,7 @@
           <!-- end form-group -->
           <div class="form-group">
             <label>Guests</label>
+
             <div class="select-box">
               <input type='text' name='quantity' value='0' class='qty' />
               <span>Adt,</span>
@@ -140,83 +141,39 @@
           <!-- end recommended --> 
         </div>
         <!-- end rooms-top-bar -->
-        <div class="room-box"> <span class="like"><i class="fa fa-heart-o deactive" aria-hidden="true"></i> <i class="fa fa-heart active" aria-hidden="true"></i></span>
-          <figure><img src="images/room-list1.jpg" alt="Image"> <span class="save-label">SAVE %42</span> </figure>
+        @foreach($rooms as $room)
+
+        <div class="room-box">
+          <span class="like">
+            <i class="fa fa-heart-o deactive" aria-hidden="true"></i>
+            <i class="fa fa-heart active" aria-hidden="true"></i>
+          </span>
+          <figure>
+            <img src="images/room-list1.jpg" alt="Image"> <span class="save-label">SAVE %42</span>
+          </figure>
           <div class="room-infos">
-            <h3 class="room-type">Family Room</h3>
-            <span class="room-rates"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <a href="#">156 Reviews</a> </span>
+            <h3 class="room-type"></h3>
+            <span class="room-rates">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <a href="#">156 Reviews</a> </span>
             <p><span>Bed:</span> 2 King and 1 Sofabed</p>
-            <p><span>Max:</span> 4 People</p>
+            <p><span>Max:</span>  {{ $room->guest }} </p>
           </div>
           <!-- end room-infos -->
-          <div class="room-price"> <span class="price">$102<small>/night</small></span> <small class="total">$556 total</small> <a href="room-detail.html" class="btn-orange-small">Choose</a> </div>
+          <div class="room-price">
+            <span class="price"><small>/night</small></span>
+            <small class="total">$556 total</small>
+                <a href="#" class="btn-orange-small">Choose</a>
+          </div>
           <!-- end room-price --> 
         </div>
+        @endforeach
         <!-- end room-box -->
-        <div class="room-box"> <span class="like"><i class="fa fa-heart-o deactive" aria-hidden="true"></i> <i class="fa fa-heart active" aria-hidden="true"></i></span>
-          <figure><img src="images/room-list1.jpg" alt="Image"> <span class="save-label">SAVE %42</span> </figure>
-          <div class="room-infos">
-            <h3 class="room-type">Family Room</h3>
-            <span class="room-rates"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <a href="#">156 Reviews</a> </span>
-            <p><span>Bed:</span> 2 King and 1 Sofabed</p>
-            <p><span>Max:</span> 4 People</p>
-          </div>
-          <!-- end room-infos -->
-          <div class="room-price"> <span class="price">$102<small>/night</small></span> <small class="total">$556 total</small> <a href="room-detail.html" class="btn-orange-small">Choose</a> </div>
-          <!-- end room-price --> 
-        </div>
-        <!-- end room-box -->
-        <div class="room-box"> <span class="like"><i class="fa fa-heart-o deactive" aria-hidden="true"></i> <i class="fa fa-heart active" aria-hidden="true"></i></span>
-          <figure><img src="images/room-list1.jpg" alt="Image"> <span class="save-label">SAVE %42</span> </figure>
-          <div class="room-infos">
-            <h3 class="room-type">Family Room</h3>
-            <span class="room-rates"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <a href="#">156 Reviews</a> </span>
-            <p><span>Bed:</span> 2 King and 1 Sofabed</p>
-            <p><span>Max:</span> 4 People</p>
-          </div>
-          <!-- end room-infos -->
-          <div class="room-price"> <span class="price">$102<small>/night</small></span> <small class="total">$556 total</small> <a href="room-detail.html" class="btn-orange-small">Choose</a> </div>
-          <!-- end room-price --> 
-        </div>
-        <!-- end room-box -->
-        <div class="room-box"> <span class="like"><i class="fa fa-heart-o deactive" aria-hidden="true"></i> <i class="fa fa-heart active" aria-hidden="true"></i></span>
-          <figure><img src="images/room-list1.jpg" alt="Image"> <span class="save-label">SAVE %42</span> </figure>
-          <div class="room-infos">
-            <h3 class="room-type">Family Room</h3>
-            <span class="room-rates"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <a href="#">156 Reviews</a> </span>
-            <p><span>Bed:</span> 2 King and 1 Sofabed</p>
-            <p><span>Max:</span> 4 People</p>
-          </div>
-          <!-- end room-infos -->
-          <div class="room-price"> <span class="price">$102<small>/night</small></span> <small class="total">$556 total</small> <a href="room-detail.html" class="btn-orange-small">Choose</a> </div>
-          <!-- end room-price --> 
-        </div>
-        <!-- end room-box -->
-        <div class="room-box"> <span class="like"><i class="fa fa-heart-o deactive" aria-hidden="true"></i> <i class="fa fa-heart active" aria-hidden="true"></i></span>
-          <figure><img src="images/room-list1.jpg" alt="Image"> <span class="save-label">SAVE %42</span> </figure>
-          <div class="room-infos">
-            <h3 class="room-type">Family Room</h3>
-            <span class="room-rates"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <a href="#">156 Reviews</a> </span>
-            <p><span>Bed:</span> 2 King and 1 Sofabed</p>
-            <p><span>Max:</span> 4 People</p>
-          </div>
-          <!-- end room-infos -->
-          <div class="room-price"> <span class="price">$102<small>/night</small></span> <small class="total">$556 total</small> <a href="room-detail.html" class="btn-orange-small">Choose</a> </div>
-          <!-- end room-price --> 
-        </div>
-        <!-- end room-box -->
-        <div class="room-box"> <span class="like"><i class="fa fa-heart-o deactive" aria-hidden="true"></i> <i class="fa fa-heart active" aria-hidden="true"></i></span>
-          <figure><img src="images/room-list1.jpg" alt="Image"> <span class="save-label">SAVE %42</span> </figure>
-          <div class="room-infos">
-            <h3 class="room-type">Family Room</h3>
-            <span class="room-rates"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <a href="#">156 Reviews</a> </span>
-            <p><span>Bed:</span> 2 King and 1 Sofabed</p>
-            <p><span>Max:</span> 4 People</p>
-          </div>
-          <!-- end room-infos -->
-          <div class="room-price"> <span class="price">$102<small>/night</small></span> <small class="total">$556 total</small> <a href="room-detail.html" class="btn-orange-small">Choose</a> </div>
-          <!-- end room-price --> 
-        </div>
+
         <!-- end room-box -->
         <ul class="pagination">
           <li class="prev"> <a href="#" aria-label="Previous"> <span aria-hidden="true">Prev</span> </a> </li>

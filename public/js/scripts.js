@@ -31,7 +31,8 @@ $(document).ready(function() {
 	$(function(){
 			var nowTemp = new Date();
 		var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-		 
+		 var bla = $('#dpd1').val();
+		
 		var checkin = $('#dpd1').datepicker({
 		  onRender: function(date) {
 		    return date.valueOf() > now.valueOf() ? 'disabled' : '';
