@@ -1,11 +1,11 @@
 
-@extends('layout.master')
+@extends('layout.main')
 
 @section('content')
   <!-- navbar-nav -->
   
   <!-- end ver-middle --> 
-{{$rooms}}
+
 <!-- end home-slider-header -->
 <section class="we-are-the-best">
   <div class="container">

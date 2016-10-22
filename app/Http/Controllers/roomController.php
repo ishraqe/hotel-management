@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Carbon\Carbon;
 use App\Room;
 use App\RoomType;
-
+use DB;
 class roomController extends Controller
 {
 
     public function index(){
 
-        $rooms=Room::all();
-
-
-        return view('pages/rooms')->with([
-           'rooms' => $rooms
-        ]);
+       
+        return view('pages/index');
 
     }
 
@@ -28,31 +25,19 @@ class roomController extends Controller
      */
     public function room()
     {
-        $rooms=Room::all();
+       $room = DB::table('rooms')
+            ->join('room_types', 'rooms.room_type', '=', 'room_types.id')
+            ->select('*')
+            ->get();
+            
+
+       return view('pages.rooms')->with([
+           'room' => $room,
 
 
-        return view('pages.rooms')->with([
-            'rooms' => $rooms,
-
-
-        ]);
+       ]);
     }
-//    public function checkRoom(Request $request)
-//    {
-//
-//
-////    	$checkin =Carbon::createFromFormat('d/m/y',$request['Check-In']) ;
-////        $checkOut=Carbon::createFromFormat('d/m/y',$request['Check-Out']) ;
-//        $guest=$request['quest'];
-//
-//
-//
-//        return view('pages/rooms')->with([
-////            'checkin' => $checkin,
-////            'checkOut' => $checkOut,
-//            'guest'  => $guest,
-//        ]);
-    //}
+
 
 
 

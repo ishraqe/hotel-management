@@ -141,7 +141,7 @@
           <!-- end recommended --> 
         </div>
         <!-- end rooms-top-bar -->
-        @foreach($rooms as $room)
+        @foreach($room as $rooms)
 
         <div class="room-box">
           <span class="like">
@@ -160,13 +160,13 @@
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star" aria-hidden="true"></i>
               <a href="#">156 Reviews</a> </span>
-            <p><span>Bed:</span> 2 King and 1 Sofabed</p>
-            <p><span>Max:</span>  {{ $room->guest }} </p>
+            <p><span>Bed:</span> {{$rooms->bed}} King and {{$rooms->sofa}} Sofabed</p>
+            <p><span>Max:</span>  {{ $rooms->guest}} </p>
           </div>
           <!-- end room-infos -->
           <div class="room-price">
-            <span class="price"><small>/night</small></span>
-            <small class="total">$556 total</small>
+            <span class="price"><small>{{$rooms->price}}/night</small></span>
+          
                 <a href="#" class="btn-orange-small">Choose</a>
           </div>
           <!-- end room-price --> 

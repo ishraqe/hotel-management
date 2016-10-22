@@ -16,74 +16,10 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
-<div id="login-box">
- 
-  <div class="left-side">
-    <h3>Save 50%</h3>
-    <h5>on the family rooms</h5>
-  </div>
-  <!-- end left-side -->
-  <div class="right-side">
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">SIGN UP</a></li>
-      <li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">LOGIN</a></li>
-    </ul>
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane" id="signup">
-        <form>
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text">
-          </div>
-          <!-- end form-group -->
-          <div class="form-group">
-            <label>E-mail</label>
-            <input type="text">
-          </div>
-          <!-- end form-group -->
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password">
-          </div>
-          <!-- end form-group -->
-          <div class="form-group">
-            <button type="submit" class="btn-orange-large">Sign Up</button>
-          </div>
-          <!-- end form-group -->
-          <div class="or">or sign up with</div>
-          <div class="social-buttons"> <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a> <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a> </div>
-          <!-- end social-buttons -->
-        </form>
-      </div>
-      <div role="tabpanel" class="tab-pane active" id="login">
-        <form>
-          <div class="form-group">
-            <label>Username</label>
-            <input type="text">
-          </div>
-          <!-- end form-group -->
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password">
-            <a href="#" class="forget">Forget ?</a> </div>
-          <!-- end form-group -->
-          <div class="form-group">
-            <button type="submit" class="btn-orange-large">Login</button>
-          </div>
-          <!-- end form-group -->
-          <div class="or">or login with</div>
-          <div class="social-buttons"> <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a> <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a> </div>
-          <!-- end social-buttons -->
-        </form>
-      </div>
-      <!-- end login --> 
-    </div>
-    <!-- end tab-content --> 
-  </div>
-  <!-- end right-side --> 
-</div>
+@include('partials.login-signup')
 <!-- end login-box -->
 <div class="search-box"> <span class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></span>
   <div class="container">
@@ -99,12 +35,24 @@
 
 @if($actual_link =='contact')
   <header class="int-header {{$actual_link}}">
+    @if(Session::has('flash_message'))
+      <div class="alert alert-success flash" id="#flash">{{Session::get('flash_message')}}</div>
+    @endif
 @elseif($actual_link == '/')
   <header class="home-slider-header">
+    @if(Session::has('flash_message'))
+      <div class="alert alert-success flash" id="#flash">{{Session::get('flash_message')}}</div>
+    @endif
 @else
   <header class="int-header bg-1">
+    @if(Session::has('flash_message'))
+      <div class="alert alert-success flash" id="#flash">{{Session::get('flash_message')}}</div>
+    @endif
 @endif
   <nav class="navbar navbar-default">
+    @if(Session::has('flash_message'))
+      <div class="alert alert-success flash" id="#flash">{{Session::get('flash_message')}}</div>
+    @endif
 
     <div class="container">
       <div class="navbar-header">
@@ -133,7 +81,7 @@
             </div>
             <!-- end dropdown-menu --> 
           </li>
-          <li><a href="{{url('/')}}" class="search-btn"><img src="images/icon-search.png" alt="Image"></a> </li>
+          <li><a href="#" class="search-btn"><img src="images/icon-search.png" alt="Image"></a> </li>
         </ul>
         <ul class="nav main-menu navbar-nav navbar-right">
           <li class="dropdown"> <a class="" href="{{url('/')}}">Home<span></span></a>
@@ -197,7 +145,7 @@
         </dl>
         <dl class="contact-infos">
           <dt>Address:</dt>
-          <dd>4b Long Street, Miami, USA</dd>
+          <dd>4b Long Street, Miami, USehgqhegqehqeghqeghgeqA</dd>
         </dl>
       </div>
       <!-- end col-4 -->
@@ -281,5 +229,16 @@
 
 <!-- jQuery FILES --> 
 <script src="js/main.js"></script>
+<script>
+          $(document).ready(function(){
+            $('.flash').delay(3000).slideUp(300);
+            console.log('hello');
+          });
+
+
+</script>
+
+
+
 </body>
 </html>

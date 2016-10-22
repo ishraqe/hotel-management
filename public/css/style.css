@@ -1550,3 +1550,10 @@ textarea{appearance:none; -webkit-appearance:none; -moz-appearance:none;}
 #login-box .right-side .social-buttons .facebook{ padding:0 25px;}
 #login-box .right-side .social-buttons .twitter{ padding:0 25px;}
 }
+#login-box .right-side input[type="email"] {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #bfc3cd;
+    border-radius: 2px;
+    padding: 0 10px;
+}
