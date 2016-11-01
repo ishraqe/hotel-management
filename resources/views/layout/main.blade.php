@@ -100,6 +100,14 @@
           </li>
           <li><a href="{{url('/blog')}}">Blog<span></span></a></li>
           <li><a href="{{url('/contact')}}">Contact<span></span></a></li>
+          <li class="dropdown"> <a class="dropdown-toggle" href="#">login/register<span></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{url('/help')}}">Help Center</a></li>
+              <li><a href="{{url('/gallery')}}">Gallery</a></li>
+              <li><a href="404.html">404 Page</a></li>
+              <li><a href="coming-soon.html">Coming Soon</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
       <!-- end navbar-collapse --> 
@@ -228,7 +236,19 @@
 <!-- end site-footer --> 
 
 <!-- jQuery FILES --> 
+
 <script src="js/main.js"></script>
+ @if(Session::has('login_flash_message'))
+<script>
+
+    // $('#login').modal('show');
+    console.log('working fine');
+
+</script>
+ @endif
+
+
+  
 <script>
           $(document).ready(function(){
             $('.flash').delay(3000).slideUp(300);

@@ -19,6 +19,9 @@ class roomController extends Controller
         return view('pages/index');
 
     }
+    public function welcome(){
+      return view('welcome');
+    }
 
     /**
      * @return string
