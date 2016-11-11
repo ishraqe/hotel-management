@@ -11,7 +11,7 @@
       <li role="presentation"  class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">LOGIN</a></li>
     </ul>
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane" id="signup">
+      <div role="tabpanel" class="tab-pane " id="signup">
         <form action="{{url('/register')}}" method="post" id="registerForm">
           <input name="_token" type="hidden" value="{{ csrf_token() }}">
           <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -53,36 +53,44 @@
           </div>
 
           <!-- end form-group -->
-          {{--<div class="or">or sign up with</div>--}}
-          {{--<div class="social-buttons"> <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a> <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a> </div>--}}
-          <!-- end social-buttons -->
+         
         </form>
       </div>
       <div role="tabpanel" class="tab-pane active" id="login">
+        @if (!$errors->loginErrors->isEmpty())
+            <div class="form_error_login">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->loginErrors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+            </div>
+          @endif
 
         <form action="{{ url('/login')}}" method="post">
           <input name="_token" type="hidden" value="{{ csrf_token() }}">
 
-         <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+         <div class="form-group {{ $errors->loginErrors->first('email') ? ' has-error' : '' }}">
             <label>E-mail</label>
-            <input class="form-control" type="text" name="email" value="{{ old('email') }}">
+            <input class="form-control" type="text" name="email"  >
           </div>
           <!-- end form-group -->
           <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password">
-            <a href="#" class="forget">Forget ?</a> </div>
+            <input type="password" name="password" required="">
+             </div>
           <!-- end form-group -->
           <div class="form-group">
             <button type="submit" class="btn-orange-large">Login</button>
           </div>
           <!-- end form-group -->
-          <div class="or">or login with</div>
-          <div class="social-buttons"> <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a> <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a> </div>
           
           @if(Session::has('login_flash_message'))
-              <div class="alert alert-danger " id="#flash">{{Session::get('login_flash_message')}}</div>
+            <strong>There is something wrong with your credientials</strong>
           @endif
+          
+              
           <!-- end social-buttons -->
         </form>
       </div>

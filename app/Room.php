@@ -8,7 +8,7 @@ class Room extends Model
 {
 	protected $table='rooms';
     protected $fillable = [
-       'room_type', 'availability', 'checkIndate', 'checkOutdate',
+       'room_type', 'availability', 
     ];
 
 

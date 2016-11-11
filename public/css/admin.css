@@ -1,0 +1,14 @@
+body{
+	overflow-x: hidden;
+}
+#admin-container{
+	margin-top: 51px;
+}
+.dash-container {
+	    background: black;
+    min-height: 611px;
+}
+.dash-list{
+	margin-left: 0px;
+	width: 334px;
+}

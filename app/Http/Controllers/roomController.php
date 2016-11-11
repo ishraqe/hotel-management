@@ -41,6 +41,52 @@ class roomController extends Controller
        ]);
     }
 
+    public function checkRoom(Request $request)
+    {
+      $this->validate($request, [
+            'Check-In' => 'required',
+            'Check-Out' => 'required',
+            'guest' => 'required|min:1|max:10|numeric'
+        ]);        
+      $dateIn= date_create($request['Check-In']);
+      $dateOut=date_create($request['Check-Out']);
+
+      $userCheckInTime=date_format($dateIn,'Y-m-d ');
+      $userCheckOutTime=date_format($dateOut,'Y-m-d '); 
+     
+        $bookedRooms = DB::table('checkrooms')
+          ->where('checkOutdate', '>=', $userCheckInTime)   // here '2016-11-11' is the check in date
+          ->where('checkIndate', '<=', $userCheckOutTime)    // here '2016-11-12' is the check out date
+           ->get();
+
+           $bookedRoomsID = [];
+           foreach ($bookedRooms as $r) {
+              array_push($bookedRoomsID, $r->room_id);
+           }
+
+           $availableRoom = DB::table('rooms')
+           ->whereNotIn('id', $bookedRoomsID)
+           ->get();
+
+            foreach ($availableRoom as $availableRooms) {
+                $roomId=$availableRooms->id;
+                
+            }
+
+           return view('pages.available-room')->with([
+              'availableRoom' => $availableRoom
+
+            ]);
+
+     
+     
+
+
+    }
+    private function searchRoom($roomID){
+
+    }
+
 
 
 

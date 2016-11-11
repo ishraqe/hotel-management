@@ -1,5 +1,7 @@
 @extends('layout.admin')
-
+@section('title')
+  Register new admin
+@endsection
 @section('content')
 
  <div id="page-wrapper">

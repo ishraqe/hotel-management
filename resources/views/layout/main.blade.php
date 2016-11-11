@@ -20,6 +20,7 @@
 </head>
 <body>
 @include('partials.login-signup')
+
 <!-- end login-box -->
 <div class="search-box"> <span class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></span>
   <div class="container">
@@ -56,11 +57,19 @@
 
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle toggle-menu menu-right push-body" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <button type="button" class="navbar-toggle toggle-menu menu-right push-body" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         <a class="navbar-brand" href="index.html"> <img src="images/logo.png" alt="Image"> </a> </div>
       <div class="collapse navbar-collapse cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="login"><a href="#login-box" class="fancybox">Login</a></li>
+        @if(Auth::guest())
+          <li class="login"><a href="#login-box" class="fancybox" data-target="#loginModal" data-toggle="modal">Login</a></li>
+        @endif
+          
           <li class="dropdown header-language"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><img src="images/flag-en.svg" alt="Image"></a>
             <div class="dropdown-menu" role="menu">
               <div class="continent">
@@ -84,30 +93,24 @@
           <li><a href="#" class="search-btn"><img src="images/icon-search.png" alt="Image"></a> </li>
         </ul>
         <ul class="nav main-menu navbar-nav navbar-right">
-          <li class="dropdown"> <a class="" href="{{url('/')}}">Home<span></span></a>
+          <li class="dropdown"> <a class="" href="{{secure_url('/')}}">Home<span></span></a>
             
           </li>
-          <li><a href="{{url('/about')}}">About  Us<span></span></a></li>
-          <li><a href="{{url('/rooms')}}">Rooms<span></span></a></li>
-          <li><a href="{{url('/facilities')}}">Facilities<span></span></a></li>
+          <li><a href="{{secure_url('/about')}}">About  Us<span></span></a></li>
+          <li><a href="{{secure_url('/rooms')}}">Rooms<span></span></a></li>
+          <li><a href="{{secure_url('/facilities')}}">Facilities<span></span></a></li>
           <li class="dropdown"> <a class="dropdown-toggle" href="#">Pages<span></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="{{url('/help')}}">Help Center</a></li>
+              <li><a href="{{secure_url('/help')}}">Help Center</a></li>
               <li><a href="{{url('/gallery')}}">Gallery</a></li>
               <li><a href="404.html">404 Page</a></li>
               <li><a href="coming-soon.html">Coming Soon</a></li>
             </ul>
           </li>
-          <li><a href="{{url('/blog')}}">Blog<span></span></a></li>
-          <li><a href="{{url('/contact')}}">Contact<span></span></a></li>
-          <li class="dropdown"> <a class="dropdown-toggle" href="#">login/register<span></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="{{url('/help')}}">Help Center</a></li>
-              <li><a href="{{url('/gallery')}}">Gallery</a></li>
-              <li><a href="404.html">404 Page</a></li>
-              <li><a href="coming-soon.html">Coming Soon</a></li>
-            </ul>
-          </li>
+          <li><a href="{{secure_url('/blog')}}">Blog<span></span></a></li>
+          <li><a href="{{secure_url('/contact')}}">Contact<span></span></a></li>
+         
+             
         </ul>
       </div>
       <!-- end navbar-collapse --> 
@@ -238,14 +241,18 @@
 <!-- jQuery FILES --> 
 
 <script src="js/main.js"></script>
- @if(Session::has('login_flash_message'))
-<script>
+<!--   @if (!$errors->loginErrors->isEmpty()) -->
+    
+       
 
-    // $('#login').modal('show');
-    console.log('working fine');
+<!-- <script type="text/javascript">
+    $(window).load(function(){
+        $('#login-box').modal('show');
+    });
+</script> -->
+   
+<!--  @endif -->
 
-</script>
- @endif
 
 
   

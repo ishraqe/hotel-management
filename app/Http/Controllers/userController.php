@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use DB;
+use Validator;
 class userController extends Controller
 {
 
@@ -24,6 +25,7 @@ class userController extends Controller
             'password' => bcrypt(request()['password']),
 
          ]);
+         
         Auth::login($user);
 
         return redirect('welcome');
@@ -35,26 +37,48 @@ class userController extends Controller
 
     public function login(Request $request){
          
-
-          $this->validate($request, [
+         
+         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required'
         ]);
-          
-        if (Auth::attempt(['email'=> $request['email'],'password'=>$request['password']])) {
-            return redirect('welcome');
+        //   $this->validate($request, [
+        //     'name' => 'required|max:255',
+        //     'email' => 'required|email|max:255|unique:users',
+        //     'password' => 'required|min:6'
+        // ]);
+        
+        if ($validator->fails())
+        {
+             return redirect()->back()->withErrors($validator, 'loginErrors');
+        }else{
+             if (Auth::attempt(['email'=> $request['email'],'password'=>$request['password'],'active'=>1])) {
+
+                 return redirect('welcome');
+            }else{
+                Session::flash('login_flash_message','There is something wrong with your credentials!');
+
+                return redirect()->back();
+            }
         }
 
-        Session::flash('login_flash_message','There is something wrong with your credentials!');
-        return redirect()->back();
+       
 
+         
+       
+       
 
 
     }
 
     public function logout(){
+
         Auth::logout();
         return redirect('/');
+          
+        
+        
+       
     }
 
 
