@@ -85,6 +85,18 @@ Route::get('/admin/adminlist',[
 	'middleware' => 'admin'
 
 ]);
+Route::get('/admin/delete/{id}',[
+	'uses' => 'adminController@adminDelete',
+	'as'	=> 'adminDelete',
+	'middleware' => 'admin'
+
+]);
+
+Route::get('admin/roomtype',[
+		'uses' => 'adminController@getRoomtype',
+		'as' 	=> 'showRoomType',
+		'middleware'	=> 'admin'
+]);
 
 
 Route::get('/admin/logout', 'adminController@logout');

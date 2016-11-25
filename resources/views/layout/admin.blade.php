@@ -52,11 +52,19 @@
 				  <a href="{{url('/admin/users')}}" class="list-group-item">User</a>
 				  <a href="{{url('/admin/admins')}}" class="list-group-item">Admin</a>
 				  <a href="#" class="list-group-item">Room</a>
-				  <a href="#" class="list-group-item">Room type</a>
+				  <a href="{{url('admin/roomtype')}}" class="list-group-item">Room type</a>
           <a href="#" class="list-group-item">Review</a>
 				</div>
 			</div>
 			<div class="col-md-9">
+        <section>
+            <div class="container content-container" style="background-color: white">
+                @if(Session::has('flash_message'))
+                    <div class="alert alert-success flash" id="#flash">{{Session::get('flash_message')}}</div>
+                @endif
+
+            </div>
+        </section>
 				@yield('content')
 			</div>
 		</div>
@@ -65,6 +73,33 @@
 
 <script type="text/javascript" src="/js/jquery2.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+@if (!empty($adminAddsuccess)) 
+  <script type="text/javascript">
+      $(document).ready(function(){
+        $(".makeAdminCollapsed").click(function(){
+        $(".makeAdminCollapsedBody").collapse('show');
+        
+        });
+      }); 
 
+</script>    
+@endif
+
+<script type="text/javascript">
+  $('#confirmAdminPassword').on('keyup', function () {
+    if ($(this).val() == $('#adminPassword').val()) {
+        $('#ConfirmPasswordMessage').html('Password matched').css('color', 'green');
+    } else $('#ConfirmPasswordMessage').html('Password didn\'t matched').css('color', 'red');
+});
+</script>
+
+<script>
+  $(document).ready(function(){
+      $('.flash').delay(3000).slideUp(300);
+      console.log('hello');
+   });
+
+
+</script>
 </body>
 </html>

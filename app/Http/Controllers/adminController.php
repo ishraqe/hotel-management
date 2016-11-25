@@ -10,7 +10,7 @@ use Session;
 
 
 class adminController extends Controller
-{
+{      
 
     public function getLogin(){
 
@@ -47,14 +47,12 @@ class adminController extends Controller
 
     }
 
-    public function getRegister(){
-        return view('admin.register');
-    }
+    
     public function postRegister(Request $request){
-        
+            
     	 $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:admins',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
             'admin_type' => 'required'
 
@@ -63,12 +61,14 @@ class adminController extends Controller
          $admin =  User::create([
             'name' => $request['name'],
             'email' => $request['email'],
-            'password' => bcrypt(request()['password']),
+            'password' => bcrypt($request['password']),
+            'admin'     => 1,
+            'admin_type' => $request['admin_type']
 
          ]);
-        Auth::login($admin);
+        Session::flash('flash_message','Admin added successfully!!');
 
-        return redirect('/admin/dashboard');
+        return redirect('/admin/admins');
     }
     public function getDashboard(){
     	return view('admin.dashboard');
@@ -133,5 +133,18 @@ class adminController extends Controller
                 'adminProfile' => $adminProfile,
                 'index'    => $index
             ]);
+    }
+    public function adminDelete($id)
+    {
+        $id=decrypt($id);
+        
+        $userDelete=User::findOrfail($id)->delete();
+
+        return redirect()->back();
+        
+    }
+    public function getRoomtype()
+    {
+        return view('admin.roomtype');    
     }	
 }
