@@ -20,6 +20,9 @@ body{
 
 .panel-default>.panel-heading{
 	color: #fff;
-    background-color: #5cb85c;
+    background-color: #09B493;
     border-color: #4cae4c;
+}
+.btn-default{
+	background: #09B493;
 }

@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\User;
 use Session;
+use App\Room_type;
 
 
 class adminController extends Controller
-{      
+{   private $index=1;
 
     public function getLogin(){
 
@@ -144,7 +145,57 @@ class adminController extends Controller
         
     }
     public function getRoomtype()
-    {
-        return view('admin.roomtype');    
+    {   $index=1;  
+        $roomType=Room_type::all();
+        return view('admin.roomtype')->with([
+            'roomType' => $roomType,
+            'index'  => $index
+        ]);    
     }	
+    public function addRoomType(Request $request)
+    {
+        $this->validate($request, [
+            'type' => 'int|required',
+            'price' => 'int|required',
+            'guestCapacity' => 'required',
+            'bed' => 'max:4|required',
+            'sofa' => 'max:6|required',
+            'size' => 'required',
+            'room_description' => 'required',
+            'room_image' => 'required'
+
+        ]);
+
+
+        $image = $request->file('room_image');
+        if ($image) {
+            $image_name = str_random(20);
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name . '.' . $ext;
+            $destination_path = 'room_image/';
+            $image_url = $destination_path . $image_full_name;
+            $success = $request->file('room_image')->move($destination_path, $image_full_name);
+           
+            if ($success) {
+                
+                $roomtype = new Room_type;
+
+                $roomtype->type = $request->type;
+                $roomtype->price = $request->price;
+                $roomtype->guest = $request->guestCapacity;
+                $roomtype->bed = $request->bed;
+                $roomtype->sofa = $request->sofa;
+                $roomtype->size = $request->size;
+                $roomtype->room_description = $request->room_description;
+                $roomtype->room_image = $image_url;
+
+               $saveData= $roomtype->save(); 
+               if ($saveData) {
+                    Session::flash('flash_message','Your data has been added!!');
+                    return redirect()->back();
+                 }  
+                
+            }
+        }
+    }
 }

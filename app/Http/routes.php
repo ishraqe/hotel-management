@@ -77,7 +77,11 @@ Route::get('/admin/register',[
 
 ]);
 
-Route::post('/admin/register','adminController@postRegister');
+Route::post('/admin/register',[
+	'uses'=>'adminController@postRegister',
+	'as'	=> 'newAdmin',
+	'middleware' => 'admin'
+]);
 
 Route::get('/admin/adminlist',[
 	'uses' => 'adminController@adminList',
@@ -96,6 +100,11 @@ Route::get('admin/roomtype',[
 		'uses' => 'adminController@getRoomtype',
 		'as' 	=> 'showRoomType',
 		'middleware'	=> 'admin'
+]);
+Route::post('/admin/addRoomType',[
+	'uses' => 'adminController@addRoomType',
+	'as'	=> 'addType',
+	'middleware'	=> 'admin'
 ]);
 
 

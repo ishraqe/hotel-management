@@ -3,7 +3,7 @@
 	Room type
 @endsection
 @section('content')
-	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
@@ -14,7 +14,7 @@
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-      	
+      		@include('partials/admin/roomType')
       </div>
     </div>
   </div>
@@ -32,82 +32,7 @@
       
           <div class="panel-body">
             	    
-          		<form action="#" method="post" id="">
-                    <input name="_token" type="hidden" value="{{ csrf_token() }}">
-                    <div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
-                       <label id="price">Room Price</label>
-
-                        <input class="form-control" type="text" name="price" value="{{ old('price') }}">
-
-                        @if ($errors->has('price'))
-                          <span class="help-block">
-                                <strong>{{ $errors->first('price') }}</strong>
-                          </span>
-                        @endif
-                   </div>
-                  <!-- end form-group -->
-                  <div class="form-group {{ $errors->has('guestCapacity') ? ' has-error' : '' }}">
-                    <label>Guest Capacity</label>
-                    <input class="form-control" type="text" name="guestCapacity" value="{{ old('guestCapacity') }}">
-                 
-                    @if ($errors->has('guestCapacity'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('guestCapacity') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-                  <!-- end form-group -->
-                  <div class="form-group {{ $errors->has('bed') ? ' has-error' : '' }}">
-                    <label>Bed no: </label>
-                    <input class="form-control" type="text" name="bed">
-                    @if ($errors->has('bed'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('bed') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-                  <div class="form-group {{ $errors->has('sofa') ? ' has-error' : '' }}">
-                    <label>Sofa no: </label>
-                    <input class="form-control" type="text" name="sofa">
-                    @if ($errors->has('sofa'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('sofa') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-                  <div class="form-group {{ $errors->has('size') ? ' has-error' : '' }}">
-                    <label>Size </label>
-                    <input class="form-control" type="text" name="size">
-                    @if ($errors->has('size'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('size') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-
-                  <div class="form-group {{ $errors->has('room_description') ? ' has-error' : '' }}">
-                    <label>Descripion </label>
-                    
-                    <textarea class="form-control" type="text" name="room_description" ></textarea>
-                    @if ($errors->has('room_description'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('room_description') }}</strong>
-                      </span>
-                    @endif
-                  </div>
-
-                 <!-- end form-group -->
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-orange-large">Add</button>
-                  </div>
-
-          <!-- end form-group -->
-          
-     
-        </form>
+          	@include('partials/admin/adminAddRoomType')
 
           </div>
         </div>
