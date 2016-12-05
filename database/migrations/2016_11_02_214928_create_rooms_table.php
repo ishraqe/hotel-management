@@ -16,6 +16,7 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->integer('room_type');
             $table->boolean('availability')->default('1');
+            $table->timestamps();
            
         });
     }

@@ -107,6 +107,59 @@ Route::post('/admin/addRoomType',[
 	'middleware'	=> 'admin'
 ]);
 
+Route::get('admin/editRoomType/{id}',[
+	'uses' => 'roomTypeController@editRoomType',
+	'as'	=> 	'editRoomType',
+	'middleware' => 'admin'
+
+]);
+
+Route::get('admin/room',[
+	'uses' => 'roomController@getRoom',
+	'as'	=> 	'editRoomType',
+	'middleware' => 'admin'
+
+]);
+
+
+Route::post('admin/addRoom',[
+	'uses' => 'roomController@addRoom',
+	'as'	=> 	'addRoom',
+	'middleware' => 'admin'
+]);
+
+Route::get('admin/editRoom/{id}',[
+	'uses' => 'roomController@editRoom',
+	'as'	=> 	'editRoom',
+	'middleware' => 'admin'
+]);
+
+Route::get('admin/deleteRoom/{id}',[
+	'uses' => 'roomController@deleteRoom',
+	'as'	=> 	'deleteRoom',
+	'middleware' => 'admin'
+]);
+
+
+
+
+
+
+
+
+Route::post('admin/editRoomType/{id}',[
+	'uses' => 'roomTypeController@postEdit',
+	'as'	=> 'postEdit',
+	'middleware' => 'admin'
+]);
+
+Route::get('admin/deleteRoomType/{id}',[
+	'uses' => 'roomTypeController@deleteRoomType',
+	'as'	=> 	'deleteRoomType',
+	'middleware' => 'admin'
+
+]);
+
 
 Route::get('/admin/logout', 'adminController@logout');
 

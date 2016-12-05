@@ -26,3 +26,22 @@ body{
 .btn-default{
 	background: #09B493;
 }
+
+.btn-delete{
+	background: red;
+}
+#table_admin>tbody>tr>td>img{
+	height: 96px;
+width: 85px;
+}
+.form-group>img{
+	height: 81px;
+width: 73px;
+}
+
+.editImageField{
+
+	border: 1px solid black;
+	margin: 10px 1px 0px -4px;
+	padding: 15px 15px 15px 15px;
+}

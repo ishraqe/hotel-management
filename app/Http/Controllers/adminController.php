@@ -165,16 +165,15 @@ class adminController extends Controller
             'room_image' => 'required'
 
         ]);
-
-
         $image = $request->file('room_image');
         if ($image) {
             $image_name = str_random(20);
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . '.' . $ext;
-            $destination_path = 'room_image/';
-            $image_url = $destination_path . $image_full_name;
+            $destination_path = 'room_images/';
+            $image_url ='/' .$destination_path . $image_full_name;
             $success = $request->file('room_image')->move($destination_path, $image_full_name);
+
            
             if ($success) {
                 

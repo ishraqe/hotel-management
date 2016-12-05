@@ -3,7 +3,7 @@
                     No, Room found!!.
                 </div>
    		 @else
-	       	<table class="table table-bordered" id="table_admin">
+	       	<table class="table table-bordered text-center" id="table_admin">
 	                <thead>
 	                <tr>
 	                    <th>Index</th>
@@ -18,7 +18,7 @@
 	                </tr>
 	                </thead>
 	                <tbody>
-	                <tr>
+	                <tr class="text-center">
 
 	                    @foreach($roomType as $roomTypes)
 	                        <td>{{$index++}}</td>
@@ -28,8 +28,9 @@
 	                        <td>{{ucfirst($roomTypes->sofa)}}</td>
 	                        <td>{{ucfirst($roomTypes->size)}}</td>
 	                        <td>{{ucfirst($roomTypes->room_description)}}</td>
-	                        <td>{{ucfirst($roomTypes->room_image)}}</td>
-	                        <td> <button>Edit</button> <button>Delete</button></td>
+
+	                        <td><img src="{{$roomTypes->room_image}}"></td>
+	                        <td> <a href="{{action('roomTypeController@editRoomType',[$roomTypes->id])}}" class="btn btn-default">Edit</a> <a href="{{action('roomTypeController@deleteRoomType',[$roomTypes->id])}}" class="btn btn-delete">Delete</a></td>
 
 
 	                </tr>
@@ -37,5 +38,6 @@
 
 	                @endforeach
 	                </tbody>
+
 	            </table>
 	        @endif  

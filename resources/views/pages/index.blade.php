@@ -19,6 +19,7 @@
           <figure><img src="images/icon1.png" alt="Image"></figure>
           <h4>Free Breakfast</h4>
           <p>Consectetuer adipiscing elit, sed diam nonummy nibh euismod, tincidunt ut laoreet dolore magna aliquam  consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui</p>
+          
         </div>
         <!-- end content-box --> 
       </div>

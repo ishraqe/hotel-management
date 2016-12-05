@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>@yield('title')</title>
+ 
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/admin.css">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
+  
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -51,7 +51,7 @@
 				  </a>
 				  <a href="{{url('/admin/users')}}" class="list-group-item">User</a>
 				  <a href="{{url('/admin/admins')}}" class="list-group-item">Admin</a>
-				  <a href="#" class="list-group-item">Room</a>
+				  <a href="{{url('admin/room')}}" class="list-group-item">Room</a>
 				  <a href="{{url('admin/roomtype')}}" class="list-group-item">Room type</a>
           <a href="#" class="list-group-item">Review</a>
 				</div>

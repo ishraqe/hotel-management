@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Carbon\Carbon;
 use App\Room;
-use App\RoomType;
+use App\Room_type;
 use DB;
+use Session;
 class roomController extends Controller
 {
 
@@ -85,6 +84,47 @@ class roomController extends Controller
     }
     private function searchRoom($roomID){
 
+    }
+
+    public function getRoom()
+    {
+      $room=Room::all();
+      $roomType=$users = DB::table('room_types')->select('type')->distinct()->get();
+      $index=1;
+      return view('admin/room')->with([
+        'index'=> $index,
+        'room'=>  $room,
+        'roomType' => $roomType
+      ]);
+    }
+
+    public function addRoom(Request $request)
+    {
+       $this->validate($request, [
+            'type' => 'required|numeric',
+            'availability' => 'required|max:1|numeric'    
+        ]);  
+       
+       $room =  Room::create([
+            
+            'room_type' => $request['type'],
+            'availability' => $request['availability']
+         ]);
+        Session::flash('flash_message','Room added successfully!!');
+        return redirect()->back();
+    }
+    public function editRoom($id)
+    {
+      $id=decrypt($id);
+
+      $room=Room::findOrfail($id);
+      return view('admin/editRoom')->with([
+        'room' => $room
+      ]);
+    }
+    public function deleteRoom($id)
+    {
+      return $id;
     }
 
 

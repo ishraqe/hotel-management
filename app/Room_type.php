@@ -13,6 +13,8 @@ class Room_type extends Model
     ];
 
 
-
+    public function getImage() {
+        return $this->room_image;
+    }
   
 }
