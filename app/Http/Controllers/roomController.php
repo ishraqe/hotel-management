@@ -14,8 +14,12 @@ class roomController extends Controller
 
     public function index(){
 
-       
-        return view('pages/index');
+      $room= DB::table('room_types')           
+            ->get();
+
+      return view('pages/index')->with([
+        'room' => $room
+      ]);
 
     }
     public function welcome(){
@@ -89,12 +93,32 @@ class roomController extends Controller
     public function getRoom()
     {
       $room=Room::all();
-      $roomType=$users = DB::table('room_types')->select('type')->distinct()->get();
+      $roomType=$users = DB::table('room_types')
+      ->select('type')
+      ->distinct()
+      ->get();
+
       $index=1;
+
+      // $bookedRoom=DB::table('checkrooms')
+      // ->orderBy('checkIndate', 'desc')
+      // ->get();
+        $currentTime= date("Y-m-d");
+        
+       $bookedRoom = DB::table('checkrooms')
+            ->join('rooms', 'checkrooms.room_id', '=', 'rooms.id')
+            ->join('room_types','rooms.room_type','=','room_types.type')
+            ->where('checkrooms.checkOutdate','>','$currentTime')
+            ->orderBy('checkrooms.checkIndate','desc')
+            ->select('*')    
+            ->get();
+        
+
       return view('admin/room')->with([
         'index'=> $index,
         'room'=>  $room,
-        'roomType' => $roomType
+        'roomType' => $roomType,
+        'bookedRoom'=> $bookedRoom
       ]);
     }
 

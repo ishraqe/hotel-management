@@ -93,15 +93,15 @@
           <li><a href="#" class="search-btn"><img src="images/icon-search.png" alt="Image"></a> </li>
         </ul>
         <ul class="nav main-menu navbar-nav navbar-right">
-          <li class="dropdown"> <a class="" href="{{secure_url('/')}}">Home<span></span></a>
+          <li class="dropdown"> <a class="" href="{{url('/')}}">Home<span></span></a>
             
           </li>
-          <li><a href="{{secure_url('/about')}}">About  Us<span></span></a></li>
-          <li><a href="{{secure_url('/rooms')}}">Rooms<span></span></a></li>
-          <li><a href="{{secure_url('/facilities')}}">Facilities<span></span></a></li>
+          <li><a href="{{url('/about')}}">About  Us<span></span></a></li>
+          <li><a href="{{url('/rooms')}}">Rooms<span></span></a></li>
+          <li><a href="{{url('/facilities')}}">Facilities<span></span></a></li>
           <li class="dropdown"> <a class="dropdown-toggle" href="#">Pages<span></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="{{secure_url('/help')}}">Help Center</a></li>
+              <li><a href="{{url('/help')}}">Help Center</a></li>
               <li><a href="{{url('/gallery')}}">Gallery</a></li>
               <li><a href="404.html">404 Page</a></li>
               <li><a href="coming-soon.html">Coming Soon</a></li>

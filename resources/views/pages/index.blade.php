@@ -2,11 +2,7 @@
 @extends('layout.main')
 
 @section('content')
-  <!-- navbar-nav -->
-  
-  <!-- end ver-middle --> 
 
-<!-- end home-slider-header -->
 <section class="we-are-the-best">
   <div class="container">
     <div class="row">
@@ -56,55 +52,13 @@
         <h2 class="section-title" data-title="Our Rooms">Our Rooms</h2>
       </div>
       <!-- end col-12 -->
-      <div class="col-md-6 col-sm-12 col-xs-12">
-        <figure class="room-box"> <img src="images/room1.jpg" alt="Image" class="image"> <span class="label-hot-offer">HOT OFFER</span> <span class="dark-filter"></span>
-          <figcaption class="room-caption-large">
-            <h5 class="room-type">Deluxe Room</h5>
-            <span class="room-price"><strong>500 $</strong> / per night</span> <span class="room-rate"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="rate-text">Good</span></span> </figcaption>
-          <!-- end room-caption-large --> 
+      @foreach($room as $rooms)
+        <figure class="figure">
+          <img src="{{substr($rooms->room_image,1)}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+          <figcaption class="figure-caption">{{$rooms->type}}</figcaption>
         </figure>
-        <!-- end room-box --> 
-      </div>
-      <!-- end col-6 -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <figure class="room-box"> <img src="images/room2.jpg" alt="Image" class="image"> <span class="dark-filter"></span>
-          <figcaption class="room-caption-small">
-            <h5 class="room-type">Single Room</h5>
-            <span class="room-price"><strong>500 $</strong> / per night</span> <span class="room-rate"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="rate-text">Good</span></span> </figcaption>
-          <!-- end room-caption-large --> 
-        </figure>
-        <!-- end room-box -->
-        <figure class="room-box"> <img src="images/room4.jpg" alt="Image" class="image"> <span class="label-most-liked">MOST LIKED</span> <span class="dark-filter"></span>
-          <figcaption class="room-caption-small">
-            <h5 class="room-type">Family Room</h5>
-            <span class="room-price"><strong>500 $</strong> / per night</span> <span class="room-rate"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="rate-text">Good</span></span> </figcaption>
-          <!-- end room-caption-large --> 
-        </figure>
-        <!-- end room-box --> 
-      </div>
-      <!-- end col-3 -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <figure class="room-box"> <img src="images/room3.jpg" alt="Image" class="image"> <span class="dark-filter"></span>
-          <figcaption class="room-caption-small">
-            <h5 class="room-type">Double Room</h5>
-            <span class="room-price"><strong>500 $</strong> / per night</span> <span class="room-rate"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i> <span class="rate-text">Good</span></span> </figcaption>
-          <!-- end room-caption-large --> 
-        </figure>
-        <!-- end room-box -->
-        <figure class="see-more-box"> <img src="images/room-more.jpg" alt="Image" class="image"> <span class="dark-filter"></span>
-          <figcaption>
-            <div class="ver-middle">
-              <div class="inner"> <a href="#">See more</a>
-                <p>28 Total</p>
-              </div>
-              <!-- end inner --> 
-            </div>
-            <!-- end ver-middle --> 
-          </figcaption>
-          <!-- end room-caption-large --> 
-        </figure>
-        <!-- end room-box --> 
-      </div>
+
+      @endforeach  
       <!-- end col-3 --> 
     </div>
     <!-- end row --> 

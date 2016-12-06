@@ -87,13 +87,43 @@ Room's
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Uhhh
+          Booked Room's
         </a>
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
-         
+         <table class="table">
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Booked Id</th>
+                <th>Room ID</th>
+                <th>Room Type</th>
+                <th>Booked From</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($bookedRoom as $bookedRooms)
+              <tr>
+                <th>{{$index++}}</th>
+                <th scope="row">{{$bookedRooms->id}}</th>
+                <td>{{$bookedRooms->room_id}}</td>
+                <td>
+                  @if($bookedRooms->room_type==1)
+                    Single
+                  @elseif($bookedRooms->room_type==2)
+                    Family
+                  @else
+                    Delux
+                  @endif
+
+                </td>
+                <td>{{$bookedRooms->checkIndate}} <strong>to</strong>  {{$bookedRooms->checkOutdate}}</td>
+              </tr>
+            @endforeach  
+            </tbody>
+          </table>
       </div>
     </div>
   </div>  
