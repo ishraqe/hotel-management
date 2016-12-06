@@ -14,11 +14,17 @@ class roomController extends Controller
 
     public function index(){
 
-      $room= DB::table('room_types')           
+      $room_type= DB::table('room_types')           
             ->get();
+      $room = DB::table('rooms')
+            ->join('room_types', 'rooms.room_type', '=', 'room_types.id')
+            ->select('*')
+            ->limit(4)
+            ->get();      
 
       return view('pages/index')->with([
-        'room' => $room
+        'room_type' => $room_type,
+        'room'  => $room
       ]);
 
     }

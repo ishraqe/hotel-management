@@ -1,6 +1,5 @@
 <?php
 
-
 Route::get('/',[
 		'uses' => 'roomController@index',
 		'as'	=> 'index',
@@ -31,7 +30,15 @@ Route::get('/logout', 'userController@logout');
 
 
 Route::post('/room-check', 'roomController@checkRoom');
-// Admin Route
+
+
+/*=======================================
+			ADMIN ROUTES
+=========================================
+*/
+
+
+
 
 Route::get('/admin/login','adminController@getLogin');
 Route::post('/admin/login','adminController@postLogin');
@@ -139,13 +146,6 @@ Route::get('admin/deleteRoom/{id}',[
 	'as'	=> 	'deleteRoom',
 	'middleware' => 'admin'
 ]);
-
-
-
-
-
-
-
 
 Route::post('admin/editRoomType/{id}',[
 	'uses' => 'roomTypeController@postEdit',

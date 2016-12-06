@@ -45,26 +45,59 @@
   <!-- end container --> 
 </section>
 <!-- end we-are-the-best -->
-<section class="our-rooms">
+<section class="gallery">
   <div class="container">
+    <div class="col-xs-12">
+        <h2 class="section-title" data-title="Our Room's">Our Room's</h2>
+    </div>
     <div class="row">
       <div class="col-xs-12">
-        <h2 class="section-title" data-title="Our Rooms">Our Rooms</h2>
-      </div>
-      <!-- end col-12 -->
-      @foreach($room as $rooms)
-        <figure class="figure">
-          <img src="{{substr($rooms->room_image,1)}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-          <figcaption class="figure-caption">{{$rooms->type}}</figcaption>
-        </figure>
+        <ul class="filter">
+          <li><a href="#" data-filter="*" class="current">ALL<br>
+            <span></span></a></li>
+          <li><a href="#" data-filter=".single">Single<br>
+            <span></span></a></li>
+          <li><a href="#" data-filter=".family">Family<br>
+            <span></span></a></li>
+          <li><a href="#" data-filter=".delux">Delux<br>
+            <span></span></a></li>
+        </ul>
+        <!-- end filter -->
+        <ul class="gallery-grid">
+          @foreach($room_type as $room_types)
+            @if($room_types->type==1)
+            <li class="single">
+            @elseif($room_types->type==2)
+            <li class="family">
+            @elseif($room_types->type==3)
+            <li class="delux">
+            @else  
+            @endif 
 
-      @endforeach  
-      <!-- end col-3 --> 
+            <figure> <img src="{{substr($room_types->room_image,1)}}" alt="Image" class="image">
+              <figcaption>
+                <div class="description"> {{$room_types->room_description}} <a href="{{substr($room_types->room_image,1)}}" class="fancybox"><img src="images/icon-zoom.png" alt="Image"></a> </div>
+                <!-- end description --> 
+              </figcaption>
+            </figure>
+          </li>
+           
+          @endforeach
+          
+        </ul>
+      </div>
+      <!-- end col-12 --> 
+      <div class="col-xs-12 text-center"> <a href="{{url('/rooms')}}" class="btn-orange-border-small">View More</a> </div>
+      <!-- end col-12 --> 
     </div>
     <!-- end row --> 
   </div>
   <!-- end container --> 
 </section>
+
+
+
+
 <!-- end our-rooms -->
 <section class="happy-travellers">
   <div class="container">
@@ -188,7 +221,7 @@
       <div class="col-xs-12">
         <h2>Enjoy your vacation with us</h2>
         <h5>Fugit qui quia ut, non omnis dignissimos</h5>
-        <a href="#" class="btn-orange-large">Book Now</a> </div>
+        <a href="{{url('/rooms')}}" class="btn-orange-large">Book Now</a> </div>
       <!-- end col-12 --> 
     </div>
     <!-- end row --> 
@@ -315,13 +348,7 @@
         <div class="home-room-carousel">
           <div class="room-box item">
             <h3 class="room-type"><a href="#">Deluxe Room</a></h3>
-            <ul class="room-icon-set">
-              <li><i class="fa fa-stethoscope" aria-hidden="true"></i></li>
-              <li><i class="fa fa-wifi" aria-hidden="true"></i></li>
-              <li><i class="fa fa-cutlery" aria-hidden="true"></i></li>
-              <li><i class="fa fa-diamond" aria-hidden="true"></i></li>
-            </ul>
-            <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <span>234 reviews</span> </div>
+            <div class="rating"><i class="fa fa-star" aria-hidden="true"></i> <span>234 reviews</span> </div>
             <!-- end rating -->
             <p class="description">Consectetuer adipiscing elit, seddiam nonummy nibh euismod, tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation mcorper.</p>
             <ul class="home-room-thumbs">
@@ -334,14 +361,9 @@
           <!-- end room-box -->
           <div class="room-box item">
             <h3 class="room-type"><a href="#">Family Room</a></h3>
-            <ul class="room-icon-set">
-              <li><i class="fa fa-stethoscope" aria-hidden="true"></i></li>
-              <li><i class="fa fa-wifi" aria-hidden="true"></i></li>
-              <li><i class="fa fa-cutlery" aria-hidden="true"></i></li>
-              <li><i class="fa fa-diamond" aria-hidden="true"></i></li>
-            </ul>
-            <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <span>374 reviews</span> </div>
-            <!-- end rating -->
+           
+            <div class="rating"> <span>374 reviews</span> </div>
+            
             <p class="description">Consectetuer adipiscing elit, seddiam nonummy nibh euismod, tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation mcorper.</p>
             <ul class="home-room-thumbs">
               <li><img src="images/room-slider-thumb5.jpg" alt="Image"></li>
@@ -349,26 +371,9 @@
               <li><img src="images/room-slider-thumb7.jpg" alt="Image"></li>
               <li><img src="images/room-slider-thumb8.jpg" alt="Image"></li>
             </ul>
-          </div>
-          <!-- end room-box -->
-          <div class="room-box item">
-            <h3 class="room-type"><a href="#">Double Room</a></h3>
-            <ul class="room-icon-set">
-              <li><i class="fa fa-stethoscope" aria-hidden="true"></i></li>
-              <li><i class="fa fa-wifi" aria-hidden="true"></i></li>
-              <li><i class="fa fa-cutlery" aria-hidden="true"></i></li>
-              <li><i class="fa fa-diamond" aria-hidden="true"></i></li>
-            </ul>
-            <div class="rating"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <span>187 reviews</span> </div>
-            <!-- end rating -->
-            <p class="description">Consectetuer adipiscing elit, seddiam nonummy nibh euismod, tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation mcorper.</p>
-            <ul class="home-room-thumbs">
-              <li><img src="images/room-slider-thumb9.jpg" alt="Image"></li>
-              <li><img src="images/room-slider-thumb10.jpg" alt="Image"></li>
-              <li><img src="images/room-slider-thumb11.jpg" alt="Image"></li>
-              <li><img src="images/room-slider-thumb12.jpg" alt="Image"></li>
-            </ul>
-          </div>
+          </div> 
+          <!-- end room-box
+         
           <!-- end room-box --> 
         </div>
         <!-- end home-room-carousel --> 
@@ -386,7 +391,7 @@
         <h2>Save up to <span>50<span>%</span></span></h2>
         <h5>at summer vacation</h5>
         <p>Consectetuer adipiscing elit, seddiam nonummy nibh euismod, tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation mcorper.</p>
-        <a href="#" class="btn-orange-large">Book now</a> </div>
+        <a href="{{url('/rooms')}}" class="btn-orange-large">Book now</a> </div>
       <!-- end col-6 -->
       <div class="col-md-4"> &nbsp; </div>
       <!-- end col-6 --> 

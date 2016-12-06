@@ -113,6 +113,14 @@ select:hover{border:2px solid #1caf4d;}
 select:focus{border:2px solid #1caf4d;}
 .form-group{ width:100%; float:left;}
 
+/*isotope*/
+
+/****** Navigation styling *******/
+
+/****** Main portfilio styling ********/
+
+
+
 
 /* BUTTONS */
 .btn-orange-large { height:50px; line-height:50px; display:inline-block; border-radius:4px; background:#f47231; border:none; color:#fff; font-weight:600; padding:0 30px; text-align:center;}

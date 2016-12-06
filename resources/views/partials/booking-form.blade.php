@@ -3,7 +3,7 @@
                    
           <div class="form-group  {{ $errors->has('Check-In') ? ' has-error' : '' }}"  >
             <label>Check-In</label>
-            <input type="text" placeholder="Choose date" class="datepicker datefield" id="dpd1" name="Check-In">
+            <input type="text" placeholder="Choose date" class="datepicker datefield" id="dpd1" name="Check-In" value="{{old('Check-In')}}">
              @if ($errors->has('Check-In'))
               <span class="help-block">
                     <strong>{{ $errors->first('Check-In') }}</strong>
@@ -13,7 +13,7 @@
           <!-- end form-group -->
           <div class="form-group  {{ $errors->has('Check-Out') ? ' has-error' : '' }}">
             <label>Check-Out</label>
-            <input type="text" placeholder="Choose date" class="datepicker datefield"  id="dpd2" name="Check-Out">
+            <input type="text" placeholder="Choose date" class="datepicker datefield"  id="dpd2" name="Check-Out" value="{{old('Check-Out')}}">
              @if ($errors->has('Check-Out'))
               <span class="help-block">
                     <strong>{{ $errors->first('Check-Out') }}</strong>
@@ -23,8 +23,24 @@
           <!-- end form-group -->
           <div class="form-group  {{ $errors->has('guest') ? ' has-error' : '' }}">
             <label>Guest</label>
+            <div class="select-box">
+              <input type='text' name='guest' value='0' class='qty' />
+              <span>Guest</span>
+             
+             <a class="dropdown-toggle select-arrow" data-toggle="dropdown" href="#"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+              <div class="dropdown-menu" role="menu">
+                <div class="qty-box"> 
+                  <input type='button' value='+' class='qtyplus' field='guest' />
+                  <input type='text' name='guest' value='0' class='qty' />
+                  <input type='button' value='-' class='qtyminus' field='guest' />
+                </div>
+                <!-- end qty-box -->
+                
+                <!-- end qty-box --> 
+              </div>
+              <!-- end dropdown-menu --> 
+            </div>
             
-            <input type="text" name="guest" >
              @if ($errors->has('guest'))
               <span class="help-block">
                     <strong>{{ $errors->first('guest') }}</strong>
