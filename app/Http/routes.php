@@ -160,6 +160,15 @@ Route::get('admin/deleteRoomType/{id}',[
 
 ]);
 
+Route::post('admin/changeSession/{id}',[
+	'uses' => 'adminController@changeSession',
+	'as'	=> 	'changeSession',
+	'middleware' => 'admin'
+
+]);
+
+
+
 
 Route::get('/admin/logout', 'adminController@logout');
 

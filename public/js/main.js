@@ -18,7 +18,7 @@ document.write('<script src="js/jquery.validate.min.js"><\/script>');
 document.write('<script src="js/google-maps.js"><\/script>');
 document.write('<script src="http://maps.googleapis.com/maps/api/js?sensor=false"><\/script>');
 document.write('<script src="js/scripts.js"><\/script>');
-
+document.write('<script src="js/inputscript.js"><\/script>');
  
 
 

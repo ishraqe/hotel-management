@@ -45,11 +45,11 @@
 	
 		<div class="row">
 			<div class="col-md-3 dash-container">
-				<div class="list-group dash-list">
+				<div class="list-group dash-list text-center">
 				  <a href="#" class="list-group-item active">
 				    Dashboard
 				  </a>
-				  <a href="{{url('/admin/users')}}" class="list-group-item">User</a>
+				  <a href="{{url('/admin/users')}}" class="list-group-item">Customer</a>
 				  <a href="{{url('/admin/admins')}}" class="list-group-item">Admin</a>
 				  <a href="{{url('admin/room')}}" class="list-group-item">Room</a>
 				  <a href="{{url('admin/roomtype')}}" class="list-group-item">Room type</a>
@@ -100,6 +100,12 @@
    });
 
 
+</script>
+<script type="text/javascript">
+  function myFunction() {
+    var x = document.getElementById("myNumber").value;
+    
+}
 </script>
 </body>
 </html>

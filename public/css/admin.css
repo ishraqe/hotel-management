@@ -1,5 +1,6 @@
 body{
 	overflow-x: hidden;
+	background: #252830;
 }
 #admin-container{
 	margin-top: 55px;
@@ -44,4 +45,7 @@ width: 73px;
 	border: 1px solid black;
 	margin: 10px 1px 0px -4px;
 	padding: 15px 15px 15px 15px;
+}
+.col-md-3.dash-container{
+	background: #252830;
 }

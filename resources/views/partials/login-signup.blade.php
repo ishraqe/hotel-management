@@ -15,10 +15,17 @@
         <form action="{{url('/register')}}" method="post" id="registerForm">
           <input name="_token" type="hidden" value="{{ csrf_token() }}">
           <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-            <label id="name">Username</label>
+            <label >Username</label>
+             <small class="login_input show-example1" id="username-input-msg-slide"> 
+              <ul>
+                <li>-The first character must be a letter.</li>
+                <li>-Numbers and the underscore may be used</li>
+                <li>-at least 5 characters and no more than 10 characters</li>
+              </ul>
+            </small> 
 
-            <input class="form-control" type="text" name="name" value="{{ old('name') }}">
-
+            <input id="login_name" class="form-control hintable" hint-class="show-example1" type="text" name="name" value="{{ old('name') }}">
+            
             @if ($errors->has('name'))
               <span class="help-block">
                     <strong>{{ $errors->first('name') }}</strong>
@@ -28,8 +35,10 @@
           <!-- end form-group -->
           <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
             <label>E-mail</label>
-            <input class="form-control" type="text" name="email" value="{{ old('email') }}">
-         
+
+            <small id="email-input-msg-slide" class="login_input show-example2"> E-mail should be valid</small>
+            <input id="login_mail"  class="form-control hintable" hint-class="show-example2" type="text" name="email" value="{{ old('email') }}">
+            
             @if ($errors->has('email'))
               <span class="help-block">
                   <strong>{{ $errors->first('email') }}</strong>
@@ -38,8 +47,13 @@
           </div>
           <!-- end form-group -->
           <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-            <label>Password</label>
-            <input class="form-control" type="password" name="password">
+            <label>Password</label> <small id="password-input-msg-slide" class="login_input show-example3"> 
+                <ul>
+                  <li>One uppercase letter one lower case letter , one number and one special character (!,@,#,$ etc)</li>
+                </ul>
+             </small>
+            <input id="login_password" class="form-control hintable" hint-class="show-example3"type="password" name="password">
+           
             @if ($errors->has('password'))
               <span class="help-block">
                   <strong>{{ $errors->first('password') }}</strong>

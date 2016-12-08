@@ -4,6 +4,71 @@
 Admin's
 @endsection
 @section('content')
+<div class="panel panel-default">
+  <div class="panel-heading">
+  <div class="row">
+    <div class="col-md-10">
+      <h3 class="panel-title">Session timeout time</h3>
+    </div>
+    <div class="col-md-2">
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+            Change
+        </button>
+    </div>
+  </div>
+  <div style="color: black" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form class="form-inline" action="{{action('adminController@changeSession',[encrypt($sessionTime[0]->id)])}}" method="post">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Change session time </h4>
+        </div>
+        <div class="modal-body" style="color: black">
+            
+               <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <div class="form-group">
+                  <label for="exampleInputName2">Admin</label>
+                  <input class="form-control" type="number"  name="session_time_for_admin" value="{{($sessionTime[0]->session_time_for_admin)/60}}">             
+                </div>
+                <div class="form-group">
+                  <label for="availability">User</label>
+                  <input type="text" type="number" class="form-control" value="{{($sessionTime[0]->session_time_for_user)/60}}" name="session_time_for_user">
+                </div>
+                
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>   
+    </div>
+  </div>
+</div>
+    
+  </div>
+  <div class="panel-body">
+   <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>For Admin (minutes)</th>
+      <th>For Customers (minutes)</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($session as $sessions)
+    <tr>
+      <th scope="row">{{$index++}}</th>
+      <td>{{($sessions->session_time_for_admin)/60}} </td>
+      <td>{{($sessions->session_time_for_user)/60}} </td>      
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+  </div>
+</div>
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">

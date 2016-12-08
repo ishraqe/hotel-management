@@ -12,11 +12,26 @@ class userController extends Controller
 {
 
     public function getRegister(Request $request){
-
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6'
+            'name' => ['required',
+                        'min:5',
+                        'max:10',
+                        'regex:(^[a-zA-Z]\w{5,10}$)'
+                    ],
+
+           'email' => [
+                        'required',
+                        'max:50',
+                        'unique:users',
+                        'regex:([a-zA-Z0-9_]+@([a-zA-Z0-9]+.(?:com|org|net|co.bd)))'
+                    ],
+
+            'password' => [
+                            'required',
+                            'min:6',
+                            'max:15',
+                            'regex:(^(?=.*\d)(?=.*[a-z])(?=.*[_|-|@|!])(?=.*[A-Z]).{6,15}$)'
+                    ]
         ]);
 
          $user =  User::create([
@@ -52,8 +67,8 @@ class userController extends Controller
         {
              return redirect()->back()->withErrors($validator, 'loginErrors');
         }else{
-             if (Auth::attempt(['email'=> $request['email'],'password'=>$request['password'],'active'=>1])) {
-
+             if (Auth::attempt(['email'=> $request['email'],'password'=>$request['password'],'active'=>1])) 
+            {
                  return redirect('welcome');
             }else{
                 Session::flash('login_flash_message','There is something wrong with your credentials!');
@@ -62,28 +77,13 @@ class userController extends Controller
             }
         }
 
-       
-
-         
-       
-       
-
-
     }
 
     public function logout(){
 
         Auth::logout();
         return redirect('/');
-          
-        
-        
        
     }
-
-
-
-
-
 
 }

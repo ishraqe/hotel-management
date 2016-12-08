@@ -56,7 +56,8 @@ class roomController extends Controller
             'Check-In' => 'required',
             'Check-Out' => 'required',
             'guest' => 'required|min:1|max:10|numeric'
-        ]);        
+        ]); 
+               
       $dateIn= date_create($request['Check-In']);
       $dateOut=date_create($request['Check-Out']);
 

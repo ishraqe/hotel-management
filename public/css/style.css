@@ -1565,3 +1565,7 @@ textarea{appearance:none; -webkit-appearance:none; -moz-appearance:none;}
     border-radius: 2px;
     padding: 0 10px;
 }
+.login_input
+{
+    display: none;
+}​

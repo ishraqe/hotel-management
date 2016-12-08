@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\User;
 use Session;
+use DB;
 use App\Room_type;
 
 
@@ -16,7 +17,9 @@ class adminController extends Controller
     public function getLogin(){
 
         if (Auth::guest()) {
-             
+            //    $localIP = getHostByName(getHostName());
+            // return $localIP;   
+         
             return view('admin.login'); 
         }
         return redirect('/admin/dashboard');
@@ -34,6 +37,9 @@ class adminController extends Controller
         if (Auth::attempt(['email'=> $request['email'],'password'=>$request['password']])) {
 
             if(Auth::user()->admin){
+                $request->session()->put('last_login_timestamp',time());
+             
+
                 return redirect('/admin/dashboard');
             }else{
                  Session::flash('login_message','Something wrong with your credientials!');
@@ -77,7 +83,8 @@ class adminController extends Controller
     
     public function logout()
     {
-          Auth::logout();
+        Auth::logout();
+
         return redirect('/admin/login');
     }
     public function getUsers()
@@ -118,10 +125,15 @@ class adminController extends Controller
         $index=1;
         $admin=User::all()
         ->where('admin',1);
+        $session= DB::table('sessions')           
+            ->get();
+        $sessionTime=DB::table('sessions')->where('id',1)->get();    
 
         return view('admin.admin-list')->with([
             'admin' => $admin,
-            'index'=> $index
+            'index'=> $index,
+            'session' => $session,
+            'sessionTime' =>$sessionTime
         ]);
     }
     public function adminProfile($id)
@@ -151,7 +163,12 @@ class adminController extends Controller
             'roomType' => $roomType,
             'index'  => $index
         ]);    
+    }
+
+    public function changeSession(Request $request){
+            return "hello";
     }	
+
     public function addRoomType(Request $request)
     {
         $this->validate($request, [
